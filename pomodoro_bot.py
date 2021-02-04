@@ -36,7 +36,7 @@ async def on_message(message):
         await sender(message, f"You have set a timer for {period} minutes! Now go get them tiger!") 
         await timer(period * 60, message)            
     
-    elif(message.content == "!help"): await message.channel.send(help)
+    elif(message.content == "!timer help"): await message.channel.send(help)
 
 @client.event
 async def on_ready():
