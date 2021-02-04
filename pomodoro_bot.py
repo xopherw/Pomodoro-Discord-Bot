@@ -29,7 +29,7 @@ async def on_message(message):
 
     if (re.match(r"^(!timer start)$", message.content)):
         await sender(message, "No time set, you have 30 minutes! Now go get them tiger!") 
-        await timer(5, message)       
+        await timer(30, message)       
 
     elif(re.match(r"^(!timer start) [0-9]{1,2}$", message.content)):
         period = int(message.content.split(' ')[-1])
