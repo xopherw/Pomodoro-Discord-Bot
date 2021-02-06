@@ -27,11 +27,14 @@ async def timer(client, period, message):
     try:
         temp_data = json.loads(open('user.json' , 'r').read())
         temp_data.update(json.loads(assigner(message.author.id)))
+        print(temp_data)
         open('user.json', 'w').write(json.dumps(temp_data))
         def stop(m): return m.content == '!stop' and m.author.id == message.author.id
         await waiter(client, period * 60, stop)
         await sender(message, "Timer is stopped and reset.")
         removeID(message.author.id) 
+        temp_data = json.loads(open('user.json' , 'r').read())
+        print(temp_data)
 
     except asyncio.TimeoutError:
         while(True):
@@ -41,6 +44,8 @@ async def timer(client, period, message):
                 await waiter(client, 2.5, done)
                 await sender(message, 'Hooray you made it! Take a break.')
                 removeID(message.author.id)
+                temp_data = json.loads(open('user.json' , 'r').read())
+                print(temp_data)
                 break
             except asyncio.TimeoutError:
                 pass
