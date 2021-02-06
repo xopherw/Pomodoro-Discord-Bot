@@ -26,7 +26,7 @@ async def on_ready():
     print(f'{client.user} has connected to Discord!')
 
 while(True):
-    try:    client.loop.run_until_complete(client.run('TOKEN'))
+    try:    client.loop.run_until_complete(client.run(os.getenv('TOKEN')))
     except Exception:
         print("Reconnecting, please hold...")
         time.sleep(5)
